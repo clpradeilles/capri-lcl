@@ -1,0 +1,4 @@
+include header
+ion-slide-box.main-slider(active-slide="activeSlide")
+  ion-slide(ng-repeat="(findex, folio) in dataModel.client")
+    ion-nav-view(name="details")

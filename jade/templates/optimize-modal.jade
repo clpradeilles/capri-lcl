@@ -1,0 +1,55 @@
+.modal
+    .lcl-modal-content
+
+        .lcl-modal-header
+            .lcl-modal-left
+                .lcl-modal-title
+                    span Synthèse
+            .lcl-modal-right
+                .lcl-modal-account
+                    span N° de compte
+                .lcl-modal-account-number
+                    span 3432675 Acuity
+                .lcl-modal-close(ng-click="closeModal()")
+
+        .lcl-modal-table
+            .lcl-modal-row(ng-repeat="p in propositions | itemSelected")
+                .lcl-modal-col.lcl-modal-col-color(ng-class="p.move === 'sell' ? 'color-green' : 'color-red'")
+                    div &nbsp;
+                .lcl-modal-col.lcl-modal-col-content-left
+                    .lcl-action
+                        .lcl-sell-buy {{p.move === 'sell' ? 'Vente' : 'Achat'}}
+                        .lcl-value {{p.name}}
+                        .lcl-isin ISIN
+                            span {{p.isin}}
+                        .lcl-comm Commission de souscription
+                            span {{p.fee}}%
+                        .lcl-ack
+                            input(type="checkbox", ng-click="toggleModalAck($index)", ng-checked="propositions[$index].acked").lcl-modal-checkbox
+                            span Je déclare avoir pris connaissance du
+                            a(href="/pdf/DICI.pdf" target="_blank") DICI
+                .lcl-modal-col.lcl-modal-col-content-right
+                    | Nombre de parts
+                    span {{p.shares}}
+                .lcl-modal-col.lcl-modal-col-amount
+                    .lcl-fees frais: {{p.fee * 0.01 * p.amount | currency }}
+                    .lcl-amount(ng-class="p.move === 'sell' ? 'amount-sell' : 'amount-buy'") {{ p.amount | currency }}
+        .lcl-modal-row.lcl-total-row
+            .lcl-modal-col.lcl-modal-col-color
+                div &nbsp;
+            .lcl-modal-col.lcl-modal-col-content-left
+                div &nbsp;
+            .lcl-modal-col.lcl-modal-col-content-right.lcl-modal-total
+                div Total
+            .lcl-modal-col.lcl-modal-col-amount
+                div(ng-class="getPropTotal() >= 0 ? 'amount-sell' : 'amount-buy'") {{ getPropTotal() | currency }}
+            // TODO Think of binding model to enable validate button
+        .lcl-modal-footer(ng-class="modalAllAcked ? '' : 'modal-disabled'")
+            input(type="checkbox", ng-disabled="!modalAllAcked", ng-model="modalCanValidate").lcl-modal-checkbox
+            span Je déclare:
+            ul
+                li m'engager à ce que mon compte présente la provision suffisante pour le prélèvement du montant de ma souscription.
+                li être informé(e) que la documentation juridique de l'OPC concerné est à ma disposition auprès de monseiller LCL ou de la société de gestion de fonds.
+                li être informé(e) que des commissions de distribution ont été versées à des tiers. Elle représentent un montant annuel maximum équivalent à 1,50% du montant de l'encours. Conformément à l'article 314-76 du réglement général de l'AMF, je peux recevoir, sur demande de ma part, des précisions sur les rémunérations relatives à la commercialistion du présent produit.
+            .lcl-modal-bottom
+                .button.lcl-button(ng-disabled="!modalCanValidate", ng-click="closeModal()") Valider les opérations

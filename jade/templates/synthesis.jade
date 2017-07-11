@@ -1,0 +1,6 @@
+.row-100(style="margin-top: 20px; margin-left: 100px; text-align: left")
+  h4 Synthèse
+.row-100(style="margin-right: 50px; margin-left: 80px")
+  groupbars(index="{{$index}}" ng-model="groupbarData")
+.row-100.row-bottom
+  .button.lcl-button(ng-click="showModal()", ng-disabled="noPropSelected") Optimiser

@@ -1,0 +1,29 @@
+ion-view(ng-controller="portfolioCtrl")
+  .content-pane.content-pane-max
+    .content-top
+      include menu
+    .row-100.content-graph
+      graph(index="{{$index}}" ng-model="graphData")
+    .content-footer
+      .account-number
+        .very-light
+          | N° compte
+        .light
+          | &nbsp; 456937 Acuity
+      .period
+        label.item.item-radio
+          input(type="radio" ng-model="periodSel" ng-change="setGraphPeriod(periodSel)" value="30" name="{{findex}}")
+          .item-content.disable-pointer-events
+            span.ng-binding Mois
+        label.item.item-radio
+          input(type="radio" ng-model="periodSel" ng-change="setGraphPeriod(periodSel)" value="90" name="{{findex}}")
+          .item-content.disable-pointer-events
+            span.ng-binding Semestre
+        label.item.item-radio
+          input(type="radio" ng-model="periodSel" ng-change="setGraphPeriod(periodSel)" value="250" name="{{findex}}")
+          .item-content.disable-pointer-events
+            span.ng-binding Année
+      .nothing
+  .bottom-pane.ng-hide
+    .bottom-left-pane(ng-include="bottomPane.left" ng-class="mainMenuSel == 'wallet' ? 'bottom-left-pane-enlarged' : ''")
+    .bottom-right-pane(ng-include="bottomPane.right" ng-class="mainMenuSel == 'wallet' ? 'bottom-right-pane-shrinked' : ''")

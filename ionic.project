@@ -1,0 +1,9 @@
+{
+  "name": "LCL-Capri2",
+  "app_id": "",
+  "gulpStartupTasks": [
+    "jade",
+    "sass",
+    "watch"
+  ]
+}

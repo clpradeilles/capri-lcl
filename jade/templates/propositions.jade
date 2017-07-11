@@ -1,0 +1,12 @@
+.title
+  | Propositions LCL
+.subtitle.pad-right
+  .validate-text
+    | {{ allPropsSelected() ? 'Tout décocher' : 'Tout sélectionner'}}
+  .validate-button(ng-click="selectAllProp()")
+ion-content
+  ion-list.lcl-list
+    ion-item(ng-repeat="proposition in propositions", can-swipe="false")
+      .text(ng-click="selectProp")
+        | {{proposition.title}}
+      .validate-button(ng-click="selectProp($index)" ng-class="proposition.selected ? 'selected' : ''")

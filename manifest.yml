@@ -1,4 +1,8 @@
 applications:
-- name: node-hello-world
-  memory: 128M
-  buildpack: sdk-for-nodejs
+- disk_quota: 1024M
+  host: lcl-capri-v3
+  name: lcl-capri-v3
+  path: .
+  domain: eu-gb.mybluemix.net
+  instances: 1
+  memory: 256M

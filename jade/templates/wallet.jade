@@ -1,0 +1,8 @@
+.row(style="margin-top: 0px; margin-left : 20px; text-align: left; width:100%;")
+ h4.col.col-60 Votre portefeuille
+ .col.col-40(style="float:right; text-align:right;margin-top: 0px;padding-right:20px;")
+   img(src="img/SRRI.png" tooltip="Le SRRI est l'indicateur synthétique de risque et de performance" tooltip-position="left")
+.row-100(style=" font-size: small; margin-left : 30px; text-align: left; color: black;margin-top:-20px;")
+  p Au {{askedDate | lowercase }}
+.row-100(style="margin-left: 40px; margin-right: 40px; margin-top: 0px; text-align: center")
+  bars(index="{{$index}}" data="barData" ng-model="barData")

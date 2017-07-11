@@ -1,0 +1,15 @@
+.header-pane(ng-controller="portfolioCtrl")
+  .row
+    .col.col-20
+      button.main-button.button(ng-click="mainMenuChange('all')")
+    .col.col-60.col-date.col-center
+      h4
+        | {{currentDate}}
+    .col.col-10.col-center(style="text-align:right; margin-top:25px")
+      dropdown(id="dropdown")
+        input(id="profile" type="checkbox")
+        label.animate(id="profileLabel" for="profile" ng-class="profiles[0].pclass") {{profiles[0].text}}
+        ul.animate
+          li.animate(ng-repeat="profile in profiles" ng-click="profileClicked($index)" ng-if="$index > 0" ng-class="profile.pclass") {{profile.text}}
+    .col.col-10.col-center
+      button.call-button.button(ng-click="showPhone()")

@@ -1,0 +1,36 @@
+.svg-container {
+    //display: inline-block;
+    //position: relative;
+    //width: 100%;
+    //padding-bottom: 100%; /* aspect ratio */
+    vertical-align: top;
+    overflow: hidden;
+}
+.svg-content-responsive {
+    display: inline-block;
+    //position: absolute;
+    top: 10px;
+    left: 0;
+}
+
+.slider-slide {
+  text-align: center;
+  padding-top: 5px;
+  color: white;
+}
+
+.row {
+  background: transparent;
+}
+
+table tr th {
+  text-align: center;
+}
+
+table {
+  border: none;
+}
+
+table tr:nth-child(2n+2) {
+  background-color: #f4f4f4;
+}

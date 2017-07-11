@@ -1,0 +1,7 @@
+.row-100
+  .search
+    input(type='text', placeholder='Saisir un produit' ng-model='searchText')
+    img(src="../img/loupe-13.svg")
+    // FIXME: Make magnifier disappear when start typing
+.row-100(style="margin-top: 20px;  text-align: center")
+  tableau(ng-model='tableauData')

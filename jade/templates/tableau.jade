@@ -1,0 +1,41 @@
+ion-content
+  .quote.quote-title
+    .quote-col.col-title
+      | Titre
+    .quote-col.col-isin
+      | ISIN
+    .quote-col.col-qty
+      | Qté
+    .quote-col.col-unit-price
+      | PrU
+    .quote-col.col-value
+      | Cours
+    .quote-col.col-var
+      | Variation
+    .quote-col.col-total
+      | Total
+    .quote-col.col-product
+      | Fiche produit
+    .quote-col.col-dici
+      | DICI
+  ion-list.lcl-list
+    ion-item(ng-repeat="data in tableauData | filter: searchText", can-swipe="false")
+      .quote
+        .quote-col.col-title
+          | {{data.FundName}}
+        .quote-col.col-isin
+          | {{data.ISIN}}
+        .quote-col.col-qty
+          | {{data.Qte | number : 2 }}
+        .quote-col.col-unit-price
+          | {{data.PrU | currency }}
+        .quote-col.col-value
+          | {{data.Cours | currency }}
+        .quote-col.col-var(ng-class="{ varPositive : {{data.Variation}}>0, varNegative : {{data.Variation}}<0, varNeutral : {{data.Variation}}==0 }")
+          | {{data.Variation | number : 1 }}%
+        .quote-col.col-total
+          | {{data.TOTAL | currency }}
+        .quote-col.col-product
+          a(href="/pdf/Fiche.pdf" target="_blank" class="button button-small button-outline button-dark button-quote") PDF
+        .quote-col.col-dici
+          a(href="/pdf/DICI.pdf" target="_blank" class="button button-small button-outline button-dark button-quote") PDF

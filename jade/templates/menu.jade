@@ -1,0 +1,36 @@
+.col-menu
+  list
+    label.item.item-radio
+      input(type="radio" ng-model="mainMenuSel" ng-change="mainMenuChange(mainMenuSel)" value="all" name="main-{{findex}}")
+      .item-content.disable-pointer-events
+        span.ng-binding Portefeuille
+    label.item.item-radio
+      input(type="radio" ng-model="mainMenuSel" ng-change="mainMenuChange(mainMenuSel)" value="wallet" name="main-{{findex}}")
+      .item-content.disable-pointer-events
+        span.ng-binding Détails Portefeuille
+    label.item.item-radio
+      input(type="radio" ng-model="mainMenuSel" ng-change="mainMenuChange(mainMenuSel)" value="optimization" name="main-{{findex}}")
+      .item-content.disable-pointer-events
+        span.ng-binding Optimisation
+.col-user
+  .picture
+    img(src="img/user.png")
+  .data
+    .big-number
+      | {{client.value | number : 0 }} €
+    .details
+      .percentile
+        | {{client.variation}} %
+      .volatility(tooltip="Mesure l'amplitude de la variation de la valeur pendant une période donnée. Une volatilité importante traduit généralement une forte exposition au risque. Lorsque la volatilité est élévée, la possibilité de gain est importante, mais le risque de perte l'est aussi.")
+        | volatilité<br>{{client.volatility}} %
+.col-lcl
+  .picture
+    img(src="img/lcl-circle.png")
+  .data
+    .big-number
+      |  {{lcl.value | number : 0 }} €
+    .details
+      .percentile
+        | {{lcl.variation}} %
+      .volatility(tooltip="Mesure l'amplitude de la variation de la valeur pendant une période donnée. Une volatilité importante traduit généralement une forte exposition au risque. Lorsque la volatilité est élévée, la possibilité de gain est importante, mais le risque de perte l'est aussi.")
+        | volatilité<br>{{client.volatility}} %
